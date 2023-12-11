@@ -1,0 +1,11 @@
+{
+  "name": "dotb",
+  "version": "1.0.0",
+  "description": "Toolbelt with various utilities for manipulating data objects",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "David Turner",
+  "license": "ISC"
+}
