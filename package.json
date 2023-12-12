@@ -2,13 +2,20 @@
   "name": "dotb",
   "version": "1.0.0",
   "description": "Toolbelt with various utilities for manipulating data objects",
-  "main": "main.ts",
+  "main": "main.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "tsc",
+    "start": "npm run build && electron ./dist/main.js"
   },
   "author": "David Turner",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^28.0.0"
+    "electron": "^28.0.0",
+    "eslint": "^8.55.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
