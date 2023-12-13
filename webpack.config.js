@@ -1,12 +1,15 @@
 const path = require("path");
 
-module.exports = {
-  entry: path.resolve(__dirname, "src/index.js"),
+const webConfig = {
+  name: "react",
+  entry: {
+    bundle: path.resolve(__dirname, "src/index.js"),
+  },
   devtool: "inline-source-map",
   mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].js",
   },
   target: "web",
   devServer: {
@@ -36,3 +39,36 @@ module.exports = {
     ],
   },
 };
+
+const electronConfig = {
+  name: "electron",
+  entry: {
+    main: path.resolve(__dirname, "src/main.ts"),
+  },
+  devtool: "inline-source-map",
+  mode: "development",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+  },
+  target: "electron-main",
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: "ts-loader",
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
+    ],
+  },
+};
+
+module.exports = [webConfig, electronConfig];

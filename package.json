@@ -6,9 +6,9 @@
   "scripts": {
     "test": "test",
     "build": "tsc",
-    "start": "npm run build && electron ./dist/main.js",
+    "start": "electron ./dist/main.js",
     "br": "webpack",
-    "sr": "webpack-dev-server ."
+    "sr": "webpack serve --config-name react"
   },
   "author": "David Turner",
   "license": "ISC",
@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@types/electron": "^1.6.10",
     "@types/react": "^18.2.44",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
