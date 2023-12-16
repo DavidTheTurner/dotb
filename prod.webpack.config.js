@@ -1,17 +1,17 @@
 const path = require("path");
 
 const webConfig = {
-  name: "react",
+  name: "electron-renderer",
   entry: {
     bundle: path.resolve(__dirname, "src/index.js"),
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
   },
-  target: "web",
+  target: "electron-renderer",
   devServer: {
     port: "3000",
     static: {
@@ -27,25 +27,20 @@ const webConfig = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
+        test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
+        exclude: [/node_modules/, /src\/main\.ts/],
         use: "ts-loader",
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: "babel-loader",
       },
     ],
   },
 };
 
 const electronConfig = {
-  name: "electron",
+  name: "electron-main",
   entry: {
     main: path.resolve(__dirname, "src/main.ts"),
   },
-  devtool: "inline-source-map",
+  devtool: "source-map",
   mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -58,14 +53,9 @@ const electronConfig = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
         exclude: /node_modules/,
         use: "ts-loader",
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: "babel-loader",
       },
     ],
   },

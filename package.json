@@ -8,15 +8,20 @@
     "build": "tsc",
     "start": "electron ./dist/main.js",
     "br": "webpack",
+    "debug-build": "webpack -c dev.webpack.config.js",
+    "debug-start": "electron ./build/main.js",
     "sr": "webpack serve --config-name react"
   },
   "author": "David Turner",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
     "babel-loader": "^9.1.3",
+    "copy-webpack-plugin": "^11.0.0",
     "electron": "^28.0.0",
     "eslint": "^8.55.0",
     "ts-loader": "^9.5.1",
@@ -27,6 +32,7 @@
   "dependencies": {
     "@types/electron": "^1.6.10",
     "@types/react": "^18.2.44",
+    "@types/react-dom": "^18.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
