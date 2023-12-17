@@ -1,21 +1,37 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+
+const isDevelopment = process.env.NODE_ENV !== "production";
+const mode = isDevelopment ? "development" : "production";
+const outputPath = isDevelopment ? "dist" : "build";
+const devServer = isDevelopment
+  ? {
+      port: "9222",
+      static: {
+        directory: path.join(__dirname, outputPath),
+      },
+      open: false,
+      hot: true,
+      liveReload: true,
+    }
+  : undefined;
 
 const webConfig = {
   name: "electron-renderer",
   entry: {
-    bundle: path.resolve(__dirname, "src/index.js"),
+    bundle: path.resolve(__dirname, "src/index.tsx"),
   },
   devtool: "source-map",
   mode: "development",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].js",
   },
   target: "electron-renderer",
   devServer: {
-    port: "3000",
+    port: "9222",
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, "build"),
     },
     open: false,
     hot: true,
@@ -43,7 +59,7 @@ const electronConfig = {
   devtool: "source-map",
   mode: "development",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].js",
   },
   target: "electron-main",
@@ -57,8 +73,18 @@ const electronConfig = {
         exclude: /node_modules/,
         use: "ts-loader",
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public/index.html"),
+    }),
+  ],
 };
 
 module.exports = [webConfig, electronConfig];

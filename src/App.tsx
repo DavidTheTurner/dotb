@@ -1,11 +1,10 @@
 import React from "react";
+import { Screen } from "./Components/Screen";
 
 const App: React.FC = () => {
   return (
     <React.StrictMode>
-      <div>
-        <h1>React Appasdfasfgsdfg</h1>
-      </div>
+      <Screen />
     </React.StrictMode>
   );
 };

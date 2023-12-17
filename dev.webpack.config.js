@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 const webConfig = {
@@ -21,6 +22,10 @@ const webConfig = {
     hot: true,
     liveReload: true,
   },
+  watchOptions: {
+    ignored: /node_modules/,
+  },
+  watch: true,
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
@@ -30,6 +35,10 @@ const webConfig = {
         test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
         exclude: [/node_modules/, /src\/main\.ts/],
         use: "ts-loader",
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -64,6 +73,11 @@ const electronConfig = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "public/index.html"),
+    }),
+  ],
 };
 
 module.exports = [webConfig, electronConfig];
