@@ -76,6 +76,7 @@ const electronConfig = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html"),
+      excludeChunks: ["main"],
     }),
   ],
 };

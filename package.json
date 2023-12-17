@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "test",
-    "build": "tsc",
     "start": "electron ./dist/main.js",
+    "build": "webpack -c dev.webpack.config.js --watch false",
     "debug-build": "webpack -c dev.webpack.config.js",
     "debug-start": "nodemon --exec electron ./build/main.js --remote-debugging-port=9222",
     "debug": "npm run debug-build && npm run debug-start",
