@@ -8,6 +8,7 @@
       "baseUrl": ".",
       "esModuleInterop": true,
       "moduleResolution": "Node",
+      "strictNullChecks": true,
       "paths": {
         "*": ["node_modules/*"]
       }
