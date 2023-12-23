@@ -1,0 +1,13 @@
+/vscode
+/build
+/dist
+/node_modules
+/public
+*.env
+*webpack*
+nodemon.json
+package.json
+package-lock.json
+tsconfig.json
+.eslintrc.js
+/src/main.ts

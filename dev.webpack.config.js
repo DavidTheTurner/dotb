@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-const webConfig = {
+const rendererConfig = {
   name: "electron-renderer",
   entry: {
     bundle: path.resolve(__dirname, "src/index.tsx"),
@@ -34,17 +34,25 @@ const webConfig = {
       {
         test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
         exclude: [/node_modules/, /src\/main\.ts/],
-        use: "ts-loader",
+        use: "babel-loader",
       },
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
     ],
   },
 };
 
-const electronConfig = {
+const mainConfig = {
   name: "electron-main",
   entry: {
     main: path.resolve(__dirname, "src/main.ts"),
@@ -64,7 +72,7 @@ const electronConfig = {
       {
         test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
         exclude: /node_modules/,
-        use: "ts-loader",
+        use: "babel-loader",
       },
       {
         test: /\.js$/,
@@ -81,4 +89,30 @@ const electronConfig = {
   ],
 };
 
-module.exports = [webConfig, electronConfig];
+const preloadConfig = {
+  name: "electron-preload",
+  entry: {
+    preload: path.resolve(__dirname, "src/preload.ts"),
+  },
+  devtool: "source-map",
+  mode: "development",
+  output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "[name].js",
+  },
+  target: "electron-preload",
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
+        exclude: /node_modules/,
+        use: "babel-loader",
+      },
+    ],
+  },
+};
+
+module.exports = [rendererConfig, mainConfig, preloadConfig];

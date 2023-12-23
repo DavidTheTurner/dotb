@@ -4,7 +4,7 @@ import { AppContainer } from "../Layouts";
 export const Screen: React.FC = () => {
   return (
     <AppContainer>
-      <h1>React Soup</h1>
+      <div>React Soup</div>
     </AppContainer>
   );
 };
