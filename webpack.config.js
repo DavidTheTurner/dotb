@@ -45,7 +45,7 @@ const webConfig = {
       {
         test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
         exclude: [/node_modules/, /src\/main\.ts/],
-        use: "ts-loader",
+        use: "babel-loader",
       },
     ],
   },
@@ -71,7 +71,7 @@ const electronConfig = {
       {
         test: /\.(tsx?|js)$/, // This regex will match .ts, .tsx, and .js files
         exclude: /node_modules/,
-        use: "ts-loader",
+        use: "babel-loader",
       },
       {
         test: /\.js$/,
