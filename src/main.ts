@@ -3,7 +3,7 @@ const { session } = require("electron");
 const path = require("node:path");
 
 const createWindow = () => {
-  const image = nativeImage.createFromPath("src/Assets/B_Logo.png");
+  const image = nativeImage.createFromPath("src/Assets/Images/B_Logo.png");
   const win = new BrowserWindow({
     width: 800,
     minWidth: 800,
