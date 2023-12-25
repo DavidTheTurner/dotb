@@ -1,10 +1,10 @@
 import React from "react";
-import { Screen } from "./Components/Screen";
+import { ModeSelectScreen } from "./Components/ModeSelectScreen/ModeSelectScreen";
 
 const App: React.FC = () => {
   return (
     <React.StrictMode>
-      <Screen />
+      <ModeSelectScreen />
     </React.StrictMode>
   );
 };

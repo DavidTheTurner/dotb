@@ -21,6 +21,7 @@ const BarContainer = styled.div`
   height: 30px;
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: space-between;
   background: rgb(255, 0, 0, 0.11);
   -webkit-app-region: drag;
