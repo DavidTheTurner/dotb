@@ -1,6 +1,7 @@
 import React from "react";
 import AppContainerStyles from "./AppContainer.module.css";
 import { Bar } from "./SubComponents";
+import styled from "styled-components";
 
 interface AppContainerType {
   children: React.ReactNode;
@@ -14,9 +15,15 @@ export const AppContainer: React.FC<AppContainerType> = (
   return (
     <div className={AppContainerStyles.appContainer}>
       <Bar />
-      {children}
+      <ChildrenContainer>{children}</ChildrenContainer>
     </div>
   );
 };
 
 AppContainer.displayName = "AppContainer";
+
+const ChildrenContainer = styled.div`
+  position: relative;
+  width: 100vw;
+  height: calc(100vh - 30px);
+`;
