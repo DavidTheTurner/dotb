@@ -2,6 +2,9 @@ const { app, BrowserWindow, ipcMain, nativeImage } = require("electron");
 const { session } = require("electron");
 const path = require("node:path");
 
+declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
+declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+
 const createWindow = () => {
   const image = nativeImage.createFromPath("src/Assets/Images/B_Logo.png");
   const win = new BrowserWindow({
@@ -15,11 +18,11 @@ const createWindow = () => {
     title: "Dot-B",
     icon: image,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
 
-  win.loadFile("index.html");
+  win.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
   return win;
 };
 
