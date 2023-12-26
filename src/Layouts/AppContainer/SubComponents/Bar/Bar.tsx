@@ -64,13 +64,13 @@ export const Bar: React.FC = () => {
         Dot-B
       </TitleContainer>
       <ButtonContainer>
-        <BarIcon color="green" onClick={handleMinimizeClick}>
+        <BarIcon color="green" onClick={handleMinimizeClick} id="minimize">
           _
         </BarIcon>
-        <BarIcon color="yellow" onClick={handleMaximizeClick}>
+        <BarIcon color="yellow" onClick={handleMaximizeClick} id="maximize">
           ^
         </BarIcon>
-        <BarIcon color="red" onClick={handleXClick}>
+        <BarIcon color="red" onClick={handleXClick} id="close">
           X
         </BarIcon>
       </ButtonContainer>

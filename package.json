@@ -13,7 +13,8 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "publish": "electron-forge publish",
+    "test": "npm run package && npm run wdio"
   },
   "author": "David Turner",
   "license": "ISC",
@@ -49,6 +50,7 @@
     "nodemon": "^3.0.2",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "wdio-electron-service": "^6.0.2",
     "webpack": "^5.89.0",
