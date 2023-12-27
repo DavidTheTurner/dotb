@@ -1,0 +1,8 @@
+Steps to get started:
+
+1. Run `npm ci` to install dependencies
+2. Run `npm run start` to spin up the application
+
+To run unit tests:
+
+1. Run `npm run test`
