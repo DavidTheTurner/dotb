@@ -1,4 +1,0 @@
-{
-  "ext": "js, json, ts, tsx, html",
-  "watch": ["build"]
-}
