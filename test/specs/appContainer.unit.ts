@@ -7,16 +7,50 @@ describe("AppContainer", () => {
 
   it("should minimize the window", async () => {
     const minimizeButton = await browser.$("#minimize");
+
+    const windowId = await browser.electron.execute((electron) => {
+      const window = electron.BrowserWindow.getFocusedWindow();
+      return window?.id ?? -1;
+    });
+    expect(windowId).toBeGreaterThan(0);
+
+    let isMinimized = await browser.electron.execute((electron, id) => {
+      const window = electron.BrowserWindow.fromId(id);
+      return window?.isMinimized();
+    }, windowId);
+    expect(isMinimized).toBe(false);
+
     await minimizeButton.click();
-    expect(await browser.$("#app-container")).toHaveAttr("minimized");
+
+    isMinimized = await browser.electron.execute((electron, id) => {
+      const window = electron.BrowserWindow.fromId(id);
+      return window?.isMinimized();
+    }, windowId);
+    expect(isMinimized).toBe(true);
   });
 
   it("should maximize the window", async () => {
     const maximizeButton = await browser.$("#maximize");
+
+    const windowId = await browser.electron.execute((electron) => {
+      const window = electron.BrowserWindow.getFocusedWindow();
+      return window?.id ?? -1;
+    });
+    expect(windowId).toBeGreaterThan(0);
+
+    let isMaximized = await browser.electron.execute((electron, id) => {
+      const window = electron.BrowserWindow.fromId(id);
+      return window?.isMaximized();
+    }, windowId);
+    expect(isMaximized).toBe(false);
+
     await maximizeButton.click();
-    expect(await browser.$("#app-container")).toHaveAttr("maximized");
-    await maximizeButton.click();
-    expect(await browser.$("#app-container")).not.toHaveAttr("maximized");
+
+    isMaximized = await browser.electron.execute((electron, id) => {
+      const window = electron.BrowserWindow.fromId(id);
+      return window?.isMaximized();
+    }, windowId);
+    expect(isMaximized).toBe(true);
   });
 
   it("should close the window", async () => {

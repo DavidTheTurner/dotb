@@ -1,6 +1,11 @@
 const { app, BrowserWindow, ipcMain, nativeImage } = require("electron");
 const { session } = require("electron");
 const path = require("node:path");
+require("wdio-electron-service/main");
+if (process.env.NODE_ENV === "test") {
+}
+
+const isTest = process.env.NODE_ENV === "test";
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
@@ -18,6 +23,7 @@ const createWindow = () => {
     title: "Dot-B",
     icon: image,
     webPreferences: {
+      sandbox: !isTest,
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
@@ -53,7 +59,7 @@ app.whenReady().then(() => {
           ],
         },
       });
-    }
+    },
   );
 
   app.on("activate", () => {
