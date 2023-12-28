@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-if npm test; then
+ORIGINAL_ARGS="$*"
+
+if npm test -- --ignore "$ORIGINAL_ARGS"; then
   exit 0
 else
   echo "Tests must pass before push!"
