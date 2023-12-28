@@ -17,6 +17,11 @@
     "test": "npm run package && npm run wdio",
     "prepare": "husky install"
   },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test"
+    }
+  },
   "author": "David Turner",
   "license": "ISC",
   "devDependencies": {
