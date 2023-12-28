@@ -14,7 +14,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "test": "npm run package && npm run wdio"
+    "test": "npm run package && npm run wdio",
+    "prepare": "husky install"
   },
   "author": "David Turner",
   "license": "ISC",
@@ -54,7 +55,8 @@
     "wdio-electron-service": "^6.0.2",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^4.15.1",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@types/electron": "^1.6.10",
