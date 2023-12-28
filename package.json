@@ -14,7 +14,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "test": "npm run package && npm run wdio"
+    "test": "npm run package && npm run wdio",
+    "prepare": "husky install"
   },
   "author": "David Turner",
   "license": "ISC",
@@ -47,6 +48,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "file-loader": "^6.2.0",
+    "husky": "^8.0.0",
+    "prettier": "^3.1.1",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",

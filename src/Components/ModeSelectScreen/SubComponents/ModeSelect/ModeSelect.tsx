@@ -8,7 +8,7 @@ interface ModeSelectProps {
 }
 
 export const ModeSelect: React.FC<ModeSelectProps> = (
-  props: ModeSelectProps
+  props: ModeSelectProps,
 ) => {
   const { handleModeSelect } = props;
 
