@@ -12,7 +12,8 @@ describe("AppContainer", () => {
   });
 
   it("should maximize the window", async () => {
-    const maximizeButton = await browser.$("#maximize");
+    const maximizeButton = await browser.$("#maximizes");
+    expect(maximizeButton).toExist();
     await maximizeButton.click();
     expect(await browser.$("#app-container")).toHaveAttr("maximized");
     await maximizeButton.click();
