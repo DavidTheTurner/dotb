@@ -14,7 +14,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "test": "npm run package && npm run wdio",
+    "test": "set ELECTRON_IS_DEV=1 && npm run package && npm run wdio",
     "prepare": "husky install"
   },
   "author": "David Turner",
@@ -63,6 +63,7 @@
     "@types/electron": "^1.6.10",
     "@types/react": "^18.2.44",
     "@types/react-dom": "^18.2.18",
+    "electron-is-dev": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.3"

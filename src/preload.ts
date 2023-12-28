@@ -1,6 +1,7 @@
 const { contextBridge, ipcRenderer } = require("electron");
-require("wdio-electron-service/preload");
-if (process.env.NODE_ENV === "test") {
+const isPreloadDev = require("electron-is-dev");
+if (isPreloadDev) {
+  require("wdio-electron-service/preload");
 }
 
 contextBridge.exposeInMainWorld("AppControls", {
