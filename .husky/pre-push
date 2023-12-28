@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cmd = "npm run test"
+echo "Running tests..."
+eval "$cmd";
