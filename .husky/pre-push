@@ -1,6 +1,17 @@
 #!/usr/bin/env sh
-cmd //C "npm test"
-if [ $? -eq 0 ]; then
+# Temporarily change to a different directory
+cd ..
+
+# Run npm test from the project root directory
+cd - > /dev/null 2>&1
+cmd /c "npm test"
+RESULT=$?
+
+# Change back to the original directory
+cd -
+
+# Check the test result
+if [ $RESULT -eq 0 ]; then
     echo "Tests passed."
     exit 0
 else
