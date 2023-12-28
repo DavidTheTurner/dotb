@@ -1,0 +1,24 @@
+name: "Test Phase"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: "Test"
+    runs-on: windows-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+      - name: "Install Node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 21.0.0
+          cache: npm
+      - name: "Install Dependencies"
+        run: npm ci
+      - name: "Run Tests"
+        run: npm test
