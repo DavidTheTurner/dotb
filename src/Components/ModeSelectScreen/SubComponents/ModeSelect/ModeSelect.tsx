@@ -18,7 +18,7 @@ export const ModeSelect: React.FC<ModeSelectProps> = (
 
   return (
     <SelectContainer>
-      
+
       
       
       
@@ -30,6 +30,9 @@ export const ModeSelect: React.FC<ModeSelectProps> = (
 
           <ModeCard
             key={mode.displayName}
+
+
+            
             mode={mode}
             onClick={() => onClick(mode)}
           />
