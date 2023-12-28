@@ -1,4 +1,10 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm test
+if npm test; then
+  exit 0
+else
+  echo "Tests must pass before push!"
+  exit 1
+fi
+```

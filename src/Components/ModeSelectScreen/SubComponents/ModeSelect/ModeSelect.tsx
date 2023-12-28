@@ -8,7 +8,7 @@ interface ModeSelectProps {
 }
 
 export const ModeSelect: React.FC<ModeSelectProps> = (
-  props: ModeSelectProps
+  props: ModeSelectProps,
 ) => {
   const { handleModeSelect } = props;
 
@@ -19,10 +19,10 @@ export const ModeSelect: React.FC<ModeSelectProps> = (
   return (
     <SelectContainer>
       <OptionsGrid>
-  {AvailableModes.map((mode) => (
-    <ModeCard
-      key={mode.displayName}
-      mode={mode}
+        {AvailableModes.map((mode) => (
+          <ModeCard
+            key={mode.displayName}
+            mode={mode}
             onClick={() => onClick(mode)}
           />
         ))}
