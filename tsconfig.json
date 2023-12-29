@@ -8,21 +8,19 @@
       "module": "CommonJS"
     }
   },
-    "compilerOptions": {
-      "jsx": "react",
-      "module": "ES6",
-      "noImplicitAny": true,
-      "sourceMap": true,
-      "outDir": "dist",
-      "baseUrl": ".",
-      "esModuleInterop": true,
-      "moduleResolution": "Node",
-      "strictNullChecks": true,
-      "paths": {
-        "*": ["node_modules/*"]
-      }
-    },
-    "include": [
-      "src/**/*"
-    ]
-  }
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "ES6",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "strictNullChecks": true,
+    "paths": {
+      "*": ["node_modules/*"]
+    }
+  },
+  "include": ["src/**/*", "test/**/*", "e2e.wdio.conf.ts", "unit.wdio.conf.ts"]
+}
