@@ -20,7 +20,7 @@
     "prepare": "husky install"
   },
   "author": "David Turner",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.6",
