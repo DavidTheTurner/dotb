@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import "./Styles/Fonts.css";
 import {
   FluentProvider,
   BrandVariants,
@@ -30,7 +31,10 @@ const aVermilionDollars: BrandVariants = {
   160: "#FFCBAF",
 };
 
-const theme: Theme = createDarkTheme(aVermilionDollars);
+const theme: Theme = {
+  ...createDarkTheme(aVermilionDollars),
+  fontFamilyBase: "Josefin Sans",
+};
 
 createRoot(root).render(
   <FluentProvider theme={theme}>

@@ -6,6 +6,7 @@ import {
   ArrowMinimize20Filled,
   Dismiss20Filled,
 } from "@fluentui/react-icons";
+import { tokens } from "@fluentui/tokens";
 
 const BarIcon = styled.div`
   cursor: pointer;
@@ -28,7 +29,7 @@ const BarContainer = styled.div`
   align-items: center;
   position: relative;
   justify-content: space-between;
-  background: rgb(255, 0, 0, 0.11);
+  background: ${(props) => props.color};
   -webkit-app-region: drag;
   -webkit-user-select: none;
 `;
@@ -63,7 +64,7 @@ export const Bar: React.FC = () => {
   };
 
   return (
-    <BarContainer>
+    <BarContainer color={tokens.colorBrandBackground2}>
       <TitleContainer>
         <Logo src={dotBLogo} />
         Dot-B
