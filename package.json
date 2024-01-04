@@ -12,7 +12,7 @@
     "wdio:unit": "wdio run ./unit.wdio.conf.ts",
     "wdio:e2e": "wdio run ./e2e.wdio.conf.ts",
     "wdio": "npm run wdio:unit && npm run wdio:e2e",
-    "start": "electron-forge start",
+    "start": "set ELECTRON_IS_DEV=0 && electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
