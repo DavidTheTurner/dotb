@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import dotBLogo from "../../../../Assets/Images/B_Logo.png";
+import {
+  BorderOutsideThick20Filled,
+  ArrowMinimize20Filled,
+  Dismiss20Filled,
+} from "@fluentui/react-icons";
 
 const BarIcon = styled.div`
   cursor: pointer;
@@ -65,13 +70,13 @@ export const Bar: React.FC = () => {
       </TitleContainer>
       <ButtonContainer>
         <BarIcon color="green" onClick={handleMinimizeClick} id="minimize">
-          _
+          <ArrowMinimize20Filled />
         </BarIcon>
         <BarIcon color="yellow" onClick={handleMaximizeClick} id="maximize">
-          ^
+          <BorderOutsideThick20Filled />
         </BarIcon>
         <BarIcon color="red" onClick={handleXClick} id="close">
-          X
+          <Dismiss20Filled />
         </BarIcon>
       </ButtonContainer>
     </BarContainer>

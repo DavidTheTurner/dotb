@@ -18,6 +18,7 @@ export const ModeSelect: React.FC<ModeSelectProps> = (
 
   return (
     <SelectContainer>
+      <h3>Select Mode</h3>
       <OptionsGrid>
         {AvailableModes.map((mode) => (
           <ModeCard
