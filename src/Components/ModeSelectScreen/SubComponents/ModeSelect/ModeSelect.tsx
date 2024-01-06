@@ -3,6 +3,7 @@ import { AvailableModes, Mode } from "../../../../Constants";
 import { ModeCard } from "../ModeCard";
 import styled from "styled-components";
 import { Card } from "@fluentui/react-components";
+import { useStyles } from "../../../../Styles/UseStyles";
 
 interface ModeSelectProps {
   handleModeSelect: (modeToSelect: JSX.Element) => void;
@@ -12,6 +13,7 @@ export const ModeSelect: React.FC<ModeSelectProps> = (
   props: ModeSelectProps,
 ) => {
   const { handleModeSelect } = props;
+  const styles = useStyles();
 
   const onClick = (mode: Mode) => {
     handleModeSelect(<mode.component />);
@@ -28,9 +30,6 @@ export const ModeSelect: React.FC<ModeSelectProps> = (
             onClick={() => onClick(mode)}
           />
         ))}
-        <Card size="small" appearance="subtle">
-          <h3>Coming Soon</h3>
-        </Card>
       </OptionsGrid>
     </SelectContainer>
   );
