@@ -14,6 +14,26 @@ export const useStyles = makeStyles({
     width: "100vw",
     height: "calc(100vh - 30px)",
   },
+  selectModeContainer: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  selectModeContent: {
+    marginTop: "2rem",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  selectModeOptionsGrid: {
+    width: "80%",
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+  },
   cardContainer: {
     width: "100%",
     height: "100%",

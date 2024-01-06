@@ -1,6 +1,5 @@
 import React from "react";
 import { Mode } from "../../../../Constants";
-import styled from "styled-components";
 import { useStyles } from "../../../../Styles/UseStyles";
 import { Card } from "@fluentui/react-components";
 
