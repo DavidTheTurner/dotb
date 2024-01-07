@@ -54,7 +54,7 @@ app.whenReady().then(() => {
         responseHeaders: {
           ...details.responseHeaders,
           "Content-Security-Policy": [
-            "default-src 'self'; style-src 'self' 'unsafe-inline'",
+            "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' *;",
           ],
         },
       });

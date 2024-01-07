@@ -1,29 +1,23 @@
 import React from "react";
-import AppContainerStyles from "./AppContainer.module.css";
 import { Bar } from "./SubComponents";
-import styled from "styled-components";
+import { useStyles } from "../../Styles/UseStyles";
 
 interface AppContainerType {
   children: React.ReactNode;
 }
 
 export const AppContainer: React.FC<AppContainerType> = (
-  props: AppContainerType
+  props: AppContainerType,
 ) => {
   const { children } = props;
+  const classes = useStyles();
 
   return (
-    <div className={AppContainerStyles.appContainer}>
+    <div className={classes.root}>
       <Bar />
-      <ChildrenContainer>{children}</ChildrenContainer>
+      <div className={classes.appContentContainer}>{children}</div>
     </div>
   );
 };
 
 AppContainer.displayName = "AppContainer";
-
-const ChildrenContainer = styled.div`
-  position: relative;
-  width: 100vw;
-  height: calc(100vh - 30px);
-`;
