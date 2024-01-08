@@ -1,5 +1,6 @@
-import { DiffChecker } from "../Components";
+import { DiffChecker, JsonToTypescript } from "../Components";
 import DiffCheckerIcon from "../Assets/Images/DiffCheckerIcon.png";
+import JsonToTypescriptIcon from "../Assets/Images/JsonToTsIcon.png";
 
 export type Mode = {
   displayName: string;
@@ -15,5 +16,11 @@ export const AvailableModes: AvailableModesType = [
     component: DiffChecker,
     icon: DiffCheckerIcon,
     iconAlt: "Diff Checker",
+  },
+  {
+    displayName: "JSON To TypeScript",
+    component: JsonToTypescript,
+    icon: JsonToTypescriptIcon,
+    iconAlt: "JSON to TypeScript",
   },
 ] as const;

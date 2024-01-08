@@ -99,6 +99,7 @@ export const useStyles = makeStyles({
     ...shorthands.borderRadius("10px"),
     ...shorthands.padding("0.75rem"),
     backgroundColor: tokens.colorBrandBackground2,
+    textAlign: "center",
   },
   cardIconContainer: {
     width: "100%",
