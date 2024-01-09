@@ -1,5 +1,5 @@
 const { contextBridge, ipcRenderer } = require("electron");
-const isPreloadDev = require("electron-is-dev");
+const isPreloadDev = require("./electron-is-dev");
 if (isPreloadDev) {
   require("wdio-electron-service/preload");
 }
