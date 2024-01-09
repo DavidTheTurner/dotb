@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, nativeImage } = require("electron");
 const { session } = require("electron");
 const path = require("node:path");
-const isDev = require("electron-is-dev");
+const isDev = require("./electron-is-dev");
 if (isDev) {
   require("wdio-electron-service/main");
 }
