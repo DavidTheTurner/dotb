@@ -8,7 +8,7 @@ export const JsonToTypescript: React.FC = () => {
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(e.target.value);
     try {
-      const output = JSON.parse(e.target.value, null, 2);
+      const output = JSON.parse(e.target.value);
       setOutputValue(output);
     } catch (e) {
       setOutputValue("invalid json");
