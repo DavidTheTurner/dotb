@@ -1,3 +1,4 @@
+import store, { saveState, loadState } from "./store";
 const { app, BrowserWindow, ipcMain, nativeImage } = require("electron");
 const { session } = require("electron");
 const path = require("node:path");
@@ -63,6 +64,7 @@ app.whenReady().then(() => {
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
+      loadState();
       createWindow();
     }
   });
@@ -70,6 +72,7 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
+    saveState();
     app.quit();
   }
 });
