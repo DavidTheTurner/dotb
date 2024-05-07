@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, nativeImage } = require("electron");
 const { session } = require("electron");
 const path = require("node:path");
-const isDev = require("electron-is-dev");
+const isDev = require("./electron-is-dev");
 if (isDev) {
   require("wdio-electron-service/main");
 }
@@ -54,7 +54,7 @@ app.whenReady().then(() => {
         responseHeaders: {
           ...details.responseHeaders,
           "Content-Security-Policy": [
-            "default-src 'self'; style-src 'self' 'unsafe-inline'",
+            "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' *;",
           ],
         },
       });
