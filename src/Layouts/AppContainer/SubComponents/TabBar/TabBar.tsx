@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
+import { Add16Filled } from "@fluentui/react-icons";
+import { useStyles } from "./UseStyles";
 import { Tab } from "./SubComponents";
 
 interface Tab {
@@ -8,6 +9,7 @@ interface Tab {
 }
 
 export const TabBar: React.FC = () => {
+  const styles = useStyles();
   const [tabs, setTabs] = useState<Map<string, Tab>>(new Map<string, Tab>());
   const [selectedTab, setSelectedTab] = useState<string>("");
   const [draggingTab, setDraggingTab] = useState<string>("");
@@ -60,6 +62,12 @@ export const TabBar: React.FC = () => {
     };
   };
 
+  const dragEnterTab = (id: string) => {
+    return () => {
+      setHoveringTab(id);
+    };
+  };
+
   const releaseTab = () => {
     setDraggingTab("");
     setHoveringTab("");
@@ -89,7 +97,7 @@ export const TabBar: React.FC = () => {
   };
 
   return (
-    <BarDiv>
+    <div className={styles.barDiv}>
       {Array.from(tabs).map(([id, tab], index) => {
         tab.order = index;
         return (
@@ -97,54 +105,22 @@ export const TabBar: React.FC = () => {
             key={id}
             id={id}
             name={tab.name}
-            order={index}
-            $isSelected={id === selectedTab}
-            $isDragOver={id === hoveringTab}
+            isSelected={id === selectedTab}
+            isDragOver={id === hoveringTab}
             handleSelect={selectTab(id)}
             handleClose={closeTab(id)}
             handleDragStart={dragTab(id)}
+            handleDragEnter={dragEnterTab(id)}
             handleDragEnd={releaseTab}
             handleDrop={dropTab(id)}
           />
         );
       })}
-      <NewTabButton onClick={createTab}>+</NewTabButton>
-    </BarDiv>
+      <button className={styles.newTabButton} onClick={createTab}>
+        <Add16Filled />
+      </button>
+    </div>
   );
 };
 
 TabBar.displayName = "TabBar";
-
-const BarDiv = styled.div`
-  width: 100%;
-  height: 2.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  box-sizing: border-box;
-  white-space: nowrap;
-  background-color: #171717;
-  border: 1px solid #2a2a2a;
-  &::-webkit-scrollbar {
-    height: 0.15rem;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #3d3d3d;
-  }
-`;
-
-const NewTabButton = styled.button`
-  height: inherit;
-  aspect-ratio: 1 / 1;
-  user-select: none;
-  vertical-align: top;
-  background-color: transparent;
-  border: none;
-  font-family: monospace;
-  color: white;
-  border-right: 1px solid #2a2a2a;
-  cursor: pointer;
-  &:hover {
-    background-color: #2a2a2a;
-    color: white;
-  }
-`;

@@ -12,7 +12,6 @@ export const useStyles = makeStyles({
   appContentContainer: {
     position: "relative",
     width: "100vw",
-    height: "calc(100vh - 30px)",
   },
   barContainer: {
     width: "100%",

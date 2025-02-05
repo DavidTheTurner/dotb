@@ -1,118 +1,84 @@
 import React from "react";
-import styled from "styled-components";
+import { mergeClasses } from "@fluentui/react-components";
+import { Dismiss16Filled } from "@fluentui/react-icons";
+import { useStyles } from "../UseStyles";
 
 interface TabProps {
   id: string;
   name: string;
-  order: number;
-  $isSelected: boolean;
-  $isDragOver: boolean;
+  isSelected: boolean;
+  isDragOver: boolean;
   handleSelect: () => void;
   handleClose: () => void;
   handleDragStart: () => void;
+  handleDragEnter: () => void;
   handleDragEnd: () => void;
   handleDrop: () => void;
 }
 
 export const Tab: React.FC<TabProps> = (props: TabProps) => {
+  const styles = useStyles();
   const {
     id,
     name,
+    isSelected,
+    isDragOver,
     handleSelect,
     handleClose,
     handleDragStart,
+    handleDragEnter,
     handleDragEnd,
     handleDrop,
     ...rest
   } = props;
 
+  const className = mergeClasses(
+    styles.tabDiv,
+    isSelected && styles.activeTab,
+    (isSelected || isDragOver) && styles.focusedTab
+  );
+
   return (
-    <TabDiv
+    <div
       {...rest}
+      className={className}
       draggable="true"
-      onMouseDown={handleSelect}
-      onDragStart={(event) => {
+      onMouseDown={(event: any) => {
+        if (event.target === event.currentTarget) {
+          handleSelect();
+        }
+      }}
+      onDragStart={(event: any) => {
         event.dataTransfer.dropEffect = "move";
         handleDragStart();
       }}
-      onDragEnd={(event) => {
-        event.stopPropagation();
+      onDragEnter={(event: any) => {
+        if (event.target === event.currentTarget) {
+          handleDragEnter();
+        }
+      }}
+      onDragOver={(event: any) => {
         event.preventDefault();
+      }}
+      onDragEnd={() => {
         handleDragEnd();
       }}
-      onDragOver={(event) => {
-        event.stopPropagation();
-        event.preventDefault();
-      }}
-      onDrop={(event) => {
-        event.stopPropagation();
-        event.preventDefault();
+      onDrop={() => {
         handleDrop();
       }}
     >
       {name}
-      <CloseButton
-        onClick={(event) => {
+      <button
+        className={styles.closeButton}
+        onClick={(event: any) => {
           event.stopPropagation();
           handleClose();
         }}
       >
-        x
-      </CloseButton>
-    </TabDiv>
+        <Dismiss16Filled />
+      </button>
+    </div>
   );
 };
 
 Tab.displayName = "Tab";
-
-const CloseButton = styled.button`
-  height: 1.5rem;
-  aspect-ratio: 1 / 1;
-  visibility: hidden;
-  user-select: none;
-  background-color: transparent;
-  border: none;
-  border-radius: 20%;
-  font-family: monospace;
-  color: #aaaaaa;
-  cursor: pointer;
-  &:hover {
-    background-color: #3d3d3d;
-    color: white;
-  }
-`;
-
-const TabDiv = styled.div<{
-  order: number;
-  $isSelected: boolean;
-  $isDragOver: boolean;
-}>`
-  height: inherit;
-  max-width: 8rem;
-  order: ${(props) => props.order};
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  column-gap: 0.5rem;
-  padding: 0 1rem 0 1rem;
-  user-select: none;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.9rem;
-  color: #aaaaaa;
-  background-color: ${(props) => {
-    if (props.$isSelected) return "#202020";
-    else if (props.$isDragOver) return "#202020";
-    else return "transparent";
-  }};
-  border-top: ${(props) => (props.$isSelected ? "1px solid #1e90ff" : "none")};
-  border-right: 1px solid #2a2a2a;
-  cursor: pointer;
-  &:hover {
-    background-color: #2a2a2a;
-  }
-  &:hover ${CloseButton} {
-    visibility: visible;
-  }
-`;
